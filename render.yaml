@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: twilio-media-server
+    env: python
+    plan: free
+    region: oregon
+    buildCommand: pip install -r requirements.txt
+    startCommand: python media_server.py
+    envVars:
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_SIP_ADDRESS
+        sync: false
+    ports:
+      - port: 10000
+        protocol: tcp
+
